@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Pelota de básquet</title>
+  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
+  <rect width="800" height="600" fill="#f2f2f2"/>
+  <circle cx="400" cy="300" r="150" fill="#e57b2c" stroke="#111" stroke-width="10"/><path d="M260 300 H540 M400 150 V450 M290 190 C350 260 450 340 510 410 M510 190 C450 260 350 340 290 410" stroke="#111" stroke-width="12" fill="none"/>
+</svg>

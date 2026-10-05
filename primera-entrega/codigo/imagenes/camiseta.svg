@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Camiseta deportiva</title>
+  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
+  <rect width="800" height="600" fill="#f2f2f2"/>
+  <path d="M260 150 L350 110 L400 165 L450 110 L540 150 L630 260 L535 320 L505 275 L505 470 L295 470 L295 275 L265 320 L170 260 Z" fill="#66b8ff" stroke="#111" stroke-width="10"/><path d="M350 120 Q400 175 450 120" stroke="#111" stroke-width="10" fill="none"/><rect x="355" y="215" width="90" height="85" fill="#fff"/><text x="378" y="272" font-family="Arial" font-size="48" font-weight="700" fill="#111">10</text>
+</svg>

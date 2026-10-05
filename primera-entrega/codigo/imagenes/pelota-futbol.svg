@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Pelota de fútbol</title>
+  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
+  <rect width="800" height="600" fill="#f2f2f2"/>
+  <circle cx="400" cy="300" r="155" fill="#fff" stroke="#111" stroke-width="10"/><polygon points="400,190 455,230 435,295 365,295 345,230" fill="#111"/><path d="M365 295 L310 350 M435 295 L490 350 M345 230 L275 200 M455 230 L525 200 M365 295 L345 400 M435 295 L455 400" stroke="#111" stroke-width="14"/>
+</svg>

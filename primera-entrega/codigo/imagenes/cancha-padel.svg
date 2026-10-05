@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Cancha de pádel</title>
+  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
+  <rect width="800" height="600" fill="#242424"/>
+  <rect x="100" y="110" width="600" height="380" fill="#4c8b65" stroke="#fff" stroke-width="10"/><rect x="180" y="155" width="440" height="290" fill="none" stroke="#fff" stroke-width="8"/><line x1="400" y1="155" x2="400" y2="445" stroke="#fff" stroke-width="5"/><line x1="180" y1="240" x2="620" y2="240" stroke="#fff" stroke-width="5"/><line x1="180" y1="360" x2="620" y2="360" stroke="#fff" stroke-width="5"/>
+</svg>

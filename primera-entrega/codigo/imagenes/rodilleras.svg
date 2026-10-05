@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Rodilleras deportivas</title>
+  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
+  <rect width="800" height="600" fill="#f2f2f2"/>
+  <path d="M260 170 Q320 130 380 170 L410 250 L375 430 Q320 500 260 430 L225 250 Z" fill="#222" stroke="#111" stroke-width="10"/><path d="M420 170 Q480 130 540 170 L575 250 L540 430 Q480 500 425 430 L390 250 Z" fill="#222" stroke="#111" stroke-width="10"/><circle cx="320" cy="300" r="55" fill="#444" stroke="#cc1111" stroke-width="12"/><circle cx="480" cy="300" r="55" fill="#444" stroke="#cc1111" stroke-width="12"/>
+</svg>
