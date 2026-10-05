@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">Pala de pádel</title>
-  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
-  <rect width="800" height="600" fill="#f2f2f2"/>
-  <path d="M395 120 C500 135 575 225 550 315 C525 400 440 430 365 385 C290 340 275 245 320 175 C335 150 360 130 395 120 Z" fill="#cc1111" stroke="#111" stroke-width="12"/><rect x="375" y="365" width="52" height="140" rx="18" fill="#111"/><circle cx="350" cy="205" r="9" fill="#fff"/><circle cx="410" cy="165" r="9" fill="#fff"/><circle cx="470" cy="210" r="9" fill="#fff"/><circle cx="385" cy="250" r="9" fill="#fff"/><circle cx="450" cy="290" r="9" fill="#fff"/>
-</svg>

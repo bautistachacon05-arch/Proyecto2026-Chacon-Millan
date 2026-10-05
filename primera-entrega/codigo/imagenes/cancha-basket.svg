@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">Cancha de básquet</title>
-  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
-  <rect width="800" height="600" fill="#242424"/>
-  <rect x="100" y="100" width="600" height="400" fill="#c78d52" stroke="#fff" stroke-width="10"/><circle cx="400" cy="300" r="80" fill="none" stroke="#fff" stroke-width="6"/><rect x="100" y="180" width="160" height="240" fill="none" stroke="#fff" stroke-width="6"/><rect x="540" y="180" width="160" height="240" fill="none" stroke="#fff" stroke-width="6"/><path d="M130 170 L215 170 Q245 300 215 430 L130 430" fill="none" stroke="#fff" stroke-width="6"/><path d="M670 170 L585 170 Q555 300 585 430 L670 430" fill="none" stroke="#fff" stroke-width="6"/>
-</svg>

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">Pelotas de tenis</title>
-  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
-  <rect width="800" height="600" fill="#f2f2f2"/>
-  <circle cx="320" cy="300" r="105" fill="#b7d63a" stroke="#111" stroke-width="10"/><circle cx="485" cy="340" r="95" fill="#b7d63a" stroke="#111" stroke-width="10"/><path d="M248 275 Q320 305 395 270 M430 315 Q490 340 545 315" stroke="#fff" stroke-width="9" fill="none"/>
-</svg>

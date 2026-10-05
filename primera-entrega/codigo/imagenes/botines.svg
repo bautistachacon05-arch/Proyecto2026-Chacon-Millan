@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
-  <title id="title">Botines deportivos</title>
-  <desc id="desc">Ilustración sintética realizada para el catálogo SportZone.</desc>
-  <rect width="800" height="600" fill="#f2f2f2"/>
-  <path d="M180 400 L250 250 L350 290 L430 360 L575 365 Q620 365 650 410 L650 460 L170 460 Q130 450 145 425 Z" fill="#cc1111" stroke="#111" stroke-width="10"/><path d="M250 250 L335 220 L420 280 L360 320 Z" fill="#1a1a1a"/><path d="M460 360 L520 335 L600 370" stroke="#fff" stroke-width="10" fill="none"/>
-</svg>
