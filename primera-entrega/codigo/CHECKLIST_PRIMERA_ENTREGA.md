@@ -11,10 +11,10 @@
 - [x] `index.html` como página principal
 - [x] README con Markdown, títulos, listas, tabla e índice de secciones
 - [x] `.gitignore`
-- [ ] Crear repositorio a partir del template indicado por la cátedra
-- [ ] Crear una branch por integrante
+- [x] Crear repositorio a partir del template indicado por la cátedra
+- [x] Crear una branch por integrante
 - [ ] Publicar con GitHub Pages
-- [ ] Completar autores y URL real de GitHub Pages
+- [x] Completar autores y URL real de GitHub Pages
 
 ## HTML / CSS / Accesibilidad
 - [x] HTML5 semántico: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`
