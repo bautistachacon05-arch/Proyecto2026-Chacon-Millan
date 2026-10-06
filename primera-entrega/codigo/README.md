@@ -1,11 +1,11 @@
 # SportZone
 
 ## Autores
-- Integrante 1: completar nombre y apellido
-- Integrante 2: completar nombre y apellido
+- Integrante 1: Bautista Chacon
+- Integrante 2: Geronimo Millan
 
 ## Enlace a GitHub Pages
-[Ver proyecto en GitHub Pages](https://<usuario>.github.io/proyecto2026-apellido1-apellido2/)
+[Ver proyecto en GitHub Pages] https://bautistachacon05-arch.github.io/Proyecto2026-Chacon-Millan/
 
 ## Contenido de la página
 
@@ -53,7 +53,7 @@
 2. Aumentar y disminuir cantidades.
 3. Confirmar una reserva sin completar campos.
 4. Ingresar una fecha anterior a hoy.
-5. Abrir Contacto y probar los enlaces de WhatsApp y mail.
+5. Formulario para completar la compra.
 
 ### Git
 Usar una rama por integrante y commits convencionales, por ejemplo:
