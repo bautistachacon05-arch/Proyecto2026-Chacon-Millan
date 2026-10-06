@@ -4,77 +4,77 @@ const productos = [
     nombre: "Pelota de fútbol",
     categoria: "futbol",
     precio: 8900,
-    imagen: "pelota-futbol.svg",
+    imagen: "pelota-futbol.jpg",
   },
   {
     id: 2,
     nombre: "Botines Nike",
     categoria: "futbol",
     precio: 32000,
-    imagen: "botines.svg",
+    imagen: "botines.webp",
   },
   {
     id: 3,
     nombre: "Camiseta Argentina",
     categoria: "futbol",
     precio: 12500,
-    imagen: "camiseta.svg",
+    imagen: "camiseta-belgrano-umbro-alternativa-2026-negro.jpg",
   },
   {
     id: 4,
     nombre: "Pala de pádel",
     categoria: "padel",
     precio: 28000,
-    imagen: "pala-padel.svg",
+    imagen: "paleta-padel.webp",
   },
   {
     id: 5,
     nombre: "Pelotas de pádel x3",
     categoria: "padel",
     precio: 1800,
-    imagen: "pelotas-padel.svg",
+    imagen: "pelotas-tenis-padel.jpg",
   },
   {
     id: 6,
     nombre: "Pelota de básquet",
     categoria: "basket",
     precio: 9500,
-    imagen: "pelota-basket.svg",
+    imagen: "pelota-basket.jpg",
   },
   {
     id: 7,
     nombre: "Zapatillas de básquet",
     categoria: "basket",
     precio: 45000,
-    imagen: "zapatillas-basket.svg",
+    imagen: "zapatillas-basket.webp",
   },
   {
     id: 8,
     nombre: "Raqueta de tenis",
     categoria: "tenis",
     precio: 38000,
-    imagen: "raqueta-tenis.svg",
+    imagen: "raqueta-tenis.webp",
   },
   {
     id: 9,
     nombre: "Pelotas de tenis x4",
     categoria: "tenis",
     precio: 1200,
-    imagen: "pelotas-tenis.svg",
+    imagen: "pelotas-tenis.webp",
   },
   {
     id: 10,
     nombre: "Pelota de vóley",
     categoria: "voley",
     precio: 11000,
-    imagen: "pelota-voley.svg",
+    imagen: "pelota-voley.avif",
   },
   {
     id: 11,
     nombre: "Rodilleras",
     categoria: "voley",
     precio: 4200,
-    imagen: "rodilleras.svg",
+    imagen: "rodilleras.jpg",
   },
 ];
 
@@ -276,35 +276,20 @@ const reservar = (e) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   mostrarCarrito();
-  document
-    .querySelectorAll(".agregar")
-    .forEach((btn) =>
-      btn.addEventListener("click", () =>
-        agregarCarrito(Number(btn.dataset.id)),
-      ),
-    );
-  document
-    .getElementById("filtro")
-    ?.addEventListener("change", filtrarProductos);
-  document
-    .getElementById("busqueda")
-    ?.addEventListener("input", filtrarProductos);
-  document.getElementById("cancha")?.addEventListener("change", cargarHorarios);
-  document.getElementById("reserva")?.addEventListener("submit", reservar);
 
   const params = new URLSearchParams(location.search);
   const categoria = params.get("categoria");
   const busqueda = params.get("busqueda");
+
   if (categoria && document.getElementById("filtro")) {
     document.getElementById("filtro").value = categoria;
     filtrarProductos();
   }
+
   if (busqueda && document.getElementById("busqueda")) {
     document.getElementById("busqueda").value = busqueda;
     filtrarProductos();
-  };
-  
- 
+  }
 });
 const procesarCompra = () => {
   const carrito = leerCarrito();
