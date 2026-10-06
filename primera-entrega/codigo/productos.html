@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Equipo SportZone"><meta name="description" content="Productos deportivos SportZone.">
+<title>SportZone | Productos</title><link rel="icon" href="imagenes/favicon.svg"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div class="header"><h1 class="logo"><a href="index.html">SportZone</a></h1><nav aria-label="Navegación"><a href="index.html">Inicio</a><a href="productos.html">Productos</a><a href="canchas.html">Canchas</a><a href="info.html">Info</a><a href="contacto.html">Contacto</a><a href="carrito.html">🛒 Carrito (<span class="nav-contador">0</span>)</a></nav></div></header>
+<main>
+<section><h2>Productos</h2><p>Buscá y filtrá algunos productos del catálogo.</p></section>
+<section class="filtros"><div class="control"><label for="filtro">Categoría</label><select id="filtro"><option value="todos">Todas</option><option value="futbol">Fútbol</option><option value="padel">Pádel</option><option value="basket">Básquet</option><option value="tenis">Tenis</option><option value="voley">Vóley</option><option value="otros">Otros</option></select></div><div class="control"><label for="busqueda">Buscar</label><input id="busqueda" type="search" placeholder="ej. pelota" size="25" maxlength="30"></div></section>
+<section class="grid">
+<article class="card producto" data-categoria="futbol" data-nombre="pelota de fútbol"><img src="imagenes/pelota_futbol.jpg" alt="Pelota de fútbol"><h3>Pelota de fútbol</h3><p class="precio">$8.900</p><button class="boton agregar" data-id="1">Agregar</button></article>
+<article class="card producto" data-categoria="futbol" data-nombre="botines nike"><img src="imagenes/botines.webp" alt="Botines"><h3>Botines Nike</h3><p class="precio">$32.000</p><button class="boton agregar" data-id="2">Agregar</button></article>
+<article class="card producto" data-categoria="futbol" data-nombre="camiseta argentina"><img src="imagenes/camiseta-belgrano-umbro-alternativa-2026-negro.jpg" alt="Camiseta argentina"><h3>Camiseta Argentina</h3><p class="precio">$12.500</p><button class="boton agregar" data-id="3">Agregar</button></article>
+<article class="card producto" data-categoria="padel" data-nombre="pala de pádel"><img src="imagenes/paleta_padel.webp" alt="Pala de pádel"><h3>Pala de pádel</h3><p class="precio">$28.000</p><button class="boton agregar" data-id="4">Agregar</button></article>
+<article class="card producto" data-categoria="padel" data-nombre="pelotas de pádel x3"><img src="imagenes/pelota_tenis_padel.jpg" alt="Pelotas de pádel"><h3>Pelotas de pádel x3</h3><p class="precio">$1.800</p><button class="boton agregar" data-id="5">Agregar</button></article>
+<article class="card producto" data-categoria="basket" data-nombre="pelota de básquet"><img src="imagenes/pelota_basket.jpg" alt="Pelota de básquet"><h3>Pelota de básquet</h3><p class="precio">$9.500</p><button class="boton agregar" data-id="6">Agregar</button></article>
+<article class="card producto" data-categoria="basket" data-nombre="zapatillas de básquet"><img src="imagenes/zapatillas_basket.webp" alt="Zapatillas de básquet"><h3>Zapatillas de básquet</h3><p class="precio">$45.000</p><button class="boton agregar" data-id="7">Agregar</button></article>
+<article class="card producto" data-categoria="tenis" data-nombre="raqueta de tenis"><img src="imagenes/raqueta_tenis.webp" alt="Raqueta de tenis"><h3>Raqueta de tenis</h3><p class="precio">$38.000</p><button class="boton agregar" data-id="8">Agregar</button></article>
+<article class="card producto" data-categoria="tenis" data-nombre="pelotas de tenis x4"><img src="imagenes/pelota_tenis_padel.jpg" alt="Pelotas de tenis"><h3>Pelotas de tenis x4</h3><p class="precio">$1.200</p><button class="boton agregar" data-id="9">Agregar</button></article>
+<article class="card producto" data-categoria="voley" data-nombre="pelota de vóley"><img src="imagenes/pelota_voley.avif" alt="Pelota de vóley"><h3>Pelota de vóley</h3><p class="precio">$11.000</p><button class="boton agregar" data-id="10">Agregar</button></article>
+<article class="card producto" data-categoria="voley" data-nombre="rodilleras"><img src="imagenes/rodilleras.jpg" alt="Rodilleras"><h3>Rodilleras</h3><p class="precio">$4.200</p><button class="boton agregar" data-id="11">Agregar</button></article>
+</section>
+
+
+</main><footer><p>SportZone - Proyecto académico</p></footer><script src="script.js"></script>
+</body></html>
