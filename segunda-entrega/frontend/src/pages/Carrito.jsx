@@ -1,6 +1,9 @@
 
 import { useState } from 'react'
 
+/**
+ * Muestra productos y reservas agregados al carrito.
+ */
 function Carrito({
   carrito,
   cambiarCantidad,
@@ -15,11 +18,14 @@ function Carrito({
   const [error, setError] = useState('')
 
   const total = carrito.reduce(
-    (acumulado, producto) =>
-      acumulado + producto.precio * producto.cantidad,
+    (acumulado, item) =>
+      acumulado + item.precio * item.cantidad,
     0
   )
 
+  /**
+   * Confirma un pedido simulado.
+   */
   const confirmarPedido = (evento) => {
     evento.preventDefault()
 
@@ -38,14 +44,16 @@ function Carrito({
       telefono,
       entrega: entrega || 'Sin especificar',
       pago: pago || 'Sin especificar',
-      productos: carrito,
+      items: carrito,
       total
     }
 
     // Pedido simulado: no se envía a un servidor.
     console.log('Pedido registrado:', pedido)
 
-    alert(`¡Pedido registrado correctamente, ${nombre.trim()}!`)
+    alert(
+      `¡Pedido registrado correctamente, ${nombre.trim()}!`
+    )
 
     vaciarCarrito()
     setNombre('')
@@ -66,50 +74,87 @@ function Carrito({
         <>
           {!mostrarFormulario ? (
             <>
-              {carrito.map((producto) => (
+              {carrito.map((item) => (
                 <article
-                  key={producto.id}
+                  key={item.id}
                   className="item-carrito"
                 >
-                  <h3>{producto.nombre}</h3>
+                  <h3>{item.nombre}</h3>
+
+                  {item.tipo === 'reserva' && (
+                    <>
+                      <p>
+                        <strong>Cancha:</strong> {item.cancha}
+                      </p>
+
+                      <p>
+                        <strong>Fecha:</strong> {item.fecha}
+                      </p>
+
+                      <p>
+                        <strong>Horario:</strong> {item.hora}
+                      </p>
+
+                      <p>
+                        <strong>Personas:</strong> {item.personas}
+                      </p>
+                    </>
+                  )}
 
                   <p>
-                    Precio: ${producto.precio.toLocaleString('es-AR')}
+                    Precio: ${item.precio.toLocaleString('es-AR')}
                   </p>
 
-                  <p>Cantidad: {producto.cantidad}</p>
+                  {item.tipo !== 'reserva' && (
+                    <p>Cantidad: {item.cantidad}</p>
+                  )}
 
                   <p>
-                    Subtotal: ${(producto.precio * producto.cantidad)
+                    Subtotal: $
+                    {(item.precio * item.cantidad)
                       .toLocaleString('es-AR')}
                   </p>
 
                   <div className="acciones-carrito">
-                    <button
-                      type="button"
-                      onClick={() => cambiarCantidad(producto.id, -1)}
-                    >
-                      -
-                    </button>
+                    {item.tipo !== 'reserva' && (
+                      <>
+                        <button
+                          type="button"
+                          aria-label={`Quitar una unidad de ${item.nombre}`}
+                          onClick={() =>
+                            cambiarCantidad(item.id, -1)
+                          }
+                        >
+                          -
+                        </button>
+
+                        <button
+                          type="button"
+                          aria-label={`Agregar una unidad de ${item.nombre}`}
+                          onClick={() =>
+                            cambiarCantidad(item.id, 1)
+                          }
+                        >
+                          +
+                        </button>
+                      </>
+                    )}
 
                     <button
                       type="button"
-                      onClick={() => cambiarCantidad(producto.id, 1)}
+                      onClick={() => eliminarProducto(item.id)}
                     >
-                      +
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => eliminarProducto(producto.id)}
-                    >
-                      Eliminar
+                      {item.tipo === 'reserva'
+                        ? 'Eliminar reserva'
+                        : 'Eliminar'}
                     </button>
                   </div>
                 </article>
               ))}
 
-              <h3>Total: ${total.toLocaleString('es-AR')}</h3>
+              <h3>
+                Total: ${total.toLocaleString('es-AR')}
+              </h3>
 
               <div className="acciones-carrito">
                 <button
@@ -140,7 +185,10 @@ function Carrito({
               <p>Solo el nombre es obligatorio.</p>
 
               <div className="control">
-                <label htmlFor="nombre">Nombre y apellido *</label>
+                <label htmlFor="nombre">
+                  Nombre y apellido *
+                </label>
+
                 <input
                   id="nombre"
                   type="text"
@@ -150,23 +198,32 @@ function Carrito({
                     setError('')
                   }}
                   aria-invalid={Boolean(error)}
-                  aria-describedby={error ? 'error-checkout' : undefined}
+                  aria-describedby={
+                    error ? 'error-checkout' : undefined
+                  }
                   maxLength={100}
                 />
               </div>
 
               <div className="control">
-                <label htmlFor="telefono">Teléfono (opcional)</label>
+                <label htmlFor="telefono">
+                  Teléfono (opcional)
+                </label>
+
                 <input
                   id="telefono"
                   type="tel"
                   value={telefono}
-                  onChange={(evento) => setTelefono(evento.target.value)}
+                  onChange={(evento) =>
+                    setTelefono(evento.target.value)
+                  }
                 />
               </div>
 
               <fieldset className="grupo-opciones">
-                <legend>Forma de entrega (opcional)</legend>
+                <legend>
+                  Forma de entrega (opcional)
+                </legend>
 
                 <label>
                   <input
@@ -174,7 +231,9 @@ function Carrito({
                     name="entrega"
                     value="Retiro"
                     checked={entrega === 'Retiro'}
-                    onChange={(evento) => setEntrega(evento.target.value)}
+                    onChange={(evento) =>
+                      setEntrega(evento.target.value)
+                    }
                   />
                   Retiro personalmente
                 </label>
@@ -185,23 +244,33 @@ function Carrito({
                     name="entrega"
                     value="Envio"
                     checked={entrega === 'Envio'}
-                    onChange={(evento) => setEntrega(evento.target.value)}
+                    onChange={(evento) =>
+                      setEntrega(evento.target.value)
+                    }
                   />
                   Envío a domicilio
                 </label>
               </fieldset>
 
               <fieldset className="grupo-opciones">
-                <legend>Forma de pago (opcional)</legend>
+                <legend>
+                  Forma de pago (opcional)
+                </legend>
 
-                {['Efectivo', 'Tarjeta', 'Transferencia'].map((opcion) => (
+                {[
+                  'Efectivo',
+                  'Tarjeta',
+                  'Transferencia'
+                ].map((opcion) => (
                   <label key={opcion}>
                     <input
                       type="radio"
                       name="pago"
                       value={opcion}
                       checked={pago === opcion}
-                      onChange={(evento) => setPago(evento.target.value)}
+                      onChange={(evento) =>
+                        setPago(evento.target.value)
+                      }
                     />
                     {opcion}
                   </label>
@@ -209,20 +278,29 @@ function Carrito({
               </fieldset>
 
               {error && (
-                <p id="error-checkout" className="mensaje-error" role="alert">
+                <p
+                  id="error-checkout"
+                  className="mensaje-error"
+                  role="alert"
+                >
                   {error}
                 </p>
               )}
 
               <div className="acciones-carrito">
-                <button className="boton" type="submit">
+                <button
+                  className="boton"
+                  type="submit"
+                >
                   Hacer pedido
                 </button>
 
                 <button
                   type="button"
                   className="boton secundario"
-                  onClick={() => setMostrarFormulario(false)}
+                  onClick={() =>
+                    setMostrarFormulario(false)
+                  }
                 >
                   Volver al carrito
                 </button>

@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const canchas = [
   {
@@ -40,7 +41,7 @@ const canchas = [
 ]
 
 /**
- * Devuelve la fecha actual en formato YYYY-MM-DD.
+ * Obtiene la fecha actual en formato YYYY-MM-DD.
  * @returns {string} Fecha local actual.
  */
 const fechaActual = () => {
@@ -53,9 +54,9 @@ const fechaActual = () => {
 }
 
 /**
- * Valida los datos ingresados en una reserva.
+ * Valida los datos ingresados en el formulario de reserva.
  * @param {object} datos - Datos del formulario.
- * @returns {object} Errores encontrados en cada campo.
+ * @returns {object} Errores encontrados.
  */
 const validarReserva = (datos) => {
   const errores = {}
@@ -78,6 +79,11 @@ const validarReserva = (datos) => {
     errores.hora = 'Seleccioná un horario.'
   } else if (cancha && !cancha.horarios.includes(datos.hora)) {
     errores.hora = 'El horario no corresponde a la cancha.'
+  } else if (
+    datos.fecha === fechaActual() &&
+    datos.hora <= new Date().toTimeString().slice(0, 5)
+  ) {
+    errores.hora = 'El horario seleccionado ya pasó.'
   }
 
   const personas = Number(datos.personas)
@@ -95,10 +101,14 @@ const validarReserva = (datos) => {
 }
 
 /**
- * Pantalla de consulta y reserva simulada de canchas.
- * @returns {JSX.Element} Pantalla de canchas.
+ * Página de canchas con reservas integradas al carrito.
+ * @param {object} props - Propiedades del componente.
+ * @param {Function} props.onAgregarReserva - Agrega una reserva al carrito.
+ * @returns {JSX.Element} Página de canchas.
  */
-function Canchas() {
+function Canchas({ onAgregarReserva }) {
+  const navigate = useNavigate()
+
   const [datos, setDatos] = useState({
     cancha: '',
     fecha: '',
@@ -107,7 +117,6 @@ function Canchas() {
   })
 
   const [tocados, setTocados] = useState({})
-  const [mensaje, setMensaje] = useState('')
 
   const canchaSeleccionada = canchas.find(
     (cancha) => String(cancha.id) === datos.cancha
@@ -116,9 +125,8 @@ function Canchas() {
   const errores = validarReserva(datos)
 
   /**
-   * Actualiza los valores del formulario y marca el campo como modificado.
-   * @param {React.ChangeEvent<HTMLInputElement|HTMLSelectElement>} evento - Evento del campo.
-   * @returns {void}
+   * Actualiza los datos y marca el campo como modificado.
+   * @param {React.ChangeEvent<HTMLInputElement|HTMLSelectElement>} evento - Cambio del formulario.
    */
   const modificarCampo = (evento) => {
     const { name, value } = evento.target
@@ -131,24 +139,17 @@ function Canchas() {
 
     setTocados((anterior) => ({
       ...anterior,
-      [name]: true
+      [name]: true,
+      ...(name === 'cancha' ? { hora: false } : {})
     }))
-
-    setMensaje('')
   }
 
-  /**
-   * Determina si debe mostrarse el error de un campo.
-   * @param {string} campo - Nombre del campo.
-   * @returns {string|false|undefined} Mensaje de error, si corresponde.
-   */
   const mostrarError = (campo) =>
     tocados[campo] && errores[campo]
 
   /**
-   * Valida y confirma una reserva simulada.
-   * @param {React.SubmitEvent<HTMLFormElement>} evento - Evento de envío.
-   * @returns {void}
+   * Agrega una reserva válida al carrito y abre la página Carrito.
+   * @param {React.SubmitEvent<HTMLFormElement>} evento - Envío del formulario.
    */
   const reservar = (evento) => {
     evento.preventDefault()
@@ -163,11 +164,20 @@ function Canchas() {
     const erroresActuales = validarReserva(datos)
 
     if (Object.keys(erroresActuales).length > 0) {
-      setMensaje('')
       return
     }
 
-    setMensaje('¡Reserva simulada registrada correctamente!')
+    const reserva = {
+      nombre: `Reserva: ${canchaSeleccionada.nombre}`,
+      canchaId: canchaSeleccionada.id,
+      cancha: canchaSeleccionada.nombre,
+      fecha: datos.fecha,
+      hora: datos.hora,
+      personas: Number(datos.personas),
+      precio: canchaSeleccionada.precio
+    }
+
+    onAgregarReserva(reserva)
 
     setDatos({
       cancha: '',
@@ -177,12 +187,18 @@ function Canchas() {
     })
 
     setTocados({})
+
+    navigate('/carrito')
   }
 
   return (
     <section>
       <h2>Reserva de canchas</h2>
-      <p>Elegí una cancha y reservá un horario.</p>
+
+      <p>
+        Elegí una cancha, una fecha y un horario.
+        Después agregá la reserva al carrito.
+      </p>
 
       <div className="canchas">
         {canchas.map((cancha) => (
@@ -232,7 +248,11 @@ function Canchas() {
             </select>
 
             {mostrarError('cancha') && (
-              <p id="error-cancha" className="mensaje-error" role="alert">
+              <p
+                id="error-cancha"
+                className="mensaje-error"
+                role="alert"
+              >
                 {errores.cancha}
               </p>
             )}
@@ -255,7 +275,11 @@ function Canchas() {
             />
 
             {mostrarError('fecha') && (
-              <p id="error-fecha" className="mensaje-error" role="alert">
+              <p
+                id="error-fecha"
+                className="mensaje-error"
+                role="alert"
+              >
                 {errores.fecha}
               </p>
             )}
@@ -285,7 +309,11 @@ function Canchas() {
             </select>
 
             {mostrarError('hora') && (
-              <p id="error-hora" className="mensaje-error" role="alert">
+              <p
+                id="error-hora"
+                className="mensaje-error"
+                role="alert"
+              >
                 {errores.hora}
               </p>
             )}
@@ -309,22 +337,20 @@ function Canchas() {
             />
 
             {mostrarError('personas') && (
-              <p id="error-personas" className="mensaje-error" role="alert">
+              <p
+                id="error-personas"
+                className="mensaje-error"
+                role="alert"
+              >
                 {errores.personas}
               </p>
             )}
           </div>
 
           <button className="boton" type="submit">
-            Confirmar reserva
+            Agregar reserva al carrito
           </button>
         </form>
-
-        {mensaje && (
-          <p className="mensaje" role="status">
-            {mensaje}
-          </p>
-        )}
       </section>
     </section>
   )
