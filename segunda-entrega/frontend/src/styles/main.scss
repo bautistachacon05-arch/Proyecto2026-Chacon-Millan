@@ -401,5 +401,31 @@ footer {
   }
 }
 
+/* Imagen principal importada desde src/assets */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 25px;
+
+  .hero-imagen {
+    width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+
+    h2 {
+      font-size: 28px;
+    }
+  }
+}
+
+
 
 

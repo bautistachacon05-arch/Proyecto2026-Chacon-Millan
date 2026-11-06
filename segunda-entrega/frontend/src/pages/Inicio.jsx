@@ -1,19 +1,33 @@
 
+import { Link } from 'react-router-dom'
+import hero from '@/assets/hero.png'
+
+/**
+ * Página principal de SportZone.
+ * @returns {JSX.Element} Contenido de inicio.
+ */
 function Inicio() {
   return (
     <>
       <section className="hero">
         <div>
           <h2>Todo para practicar tu deporte</h2>
+
           <p>
             Somos un catálogo de productos deportivos y canchas.
-            Es un proyecto para la materia.
+            Este sitio forma parte de un proyecto académico.
           </p>
 
-          <a className="boton" href="/productos">
+          <Link className="boton" to="/productos">
             Ver productos
-          </a>
+          </Link>
         </div>
+
+        <img
+          className="hero-imagen"
+          src={hero}
+          alt="Imagen principal de SportZone"
+        />
       </section>
 
       <section className="titulo">
