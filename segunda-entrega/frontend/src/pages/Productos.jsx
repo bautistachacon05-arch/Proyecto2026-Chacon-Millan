@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
-import ProductoCard from '../components/ProductoCard'
-import { obtenerProductos } from '../api/productos'
+import ProductoCard from '@/components/ProductoCard'
+import { obtenerProductos } from '@/api/productos'
 
 function Productos({ onAgregar }) {
   const [productos, setProductos] = useState([])

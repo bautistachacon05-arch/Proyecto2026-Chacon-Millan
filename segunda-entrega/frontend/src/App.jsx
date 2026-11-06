@@ -2,13 +2,13 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Inicio from './pages/Inicio'
-import Productos from './pages/Productos'
-import Carrito from './pages/Carrito'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Inicio from '@/pages/Inicio'
+import Productos from '@/pages/Productos'
+import Carrito from '@/pages/Carrito'
 
-import './styles/main.scss'
+import '@/styles/main.scss'
 
 function Layout({ cantidadCarrito }) {
   return (
