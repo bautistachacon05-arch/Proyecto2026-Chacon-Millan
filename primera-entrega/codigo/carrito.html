@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Equipo SportZone" />
+  <meta name="description" content="Carrito de SportZone." />
+  <title>SportZone | Carrito</title>
+  <link rel="icon" href="imagenes/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header">
+      <h1 class="logo"><a href="index.html">SportZone</a></h1>
+      <nav aria-label="Navegación">
+        <a href="index.html">Inicio</a><a href="productos.html">Productos</a>
+        <a href="canchas.html">Canchas</a><a href="info.html">Info</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="carrito.html">🛒 Carrito (<span class="nav-contador">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h2>Carrito</h2>
+    <p>Acá podés ver los productos que agregaste y las canchas que reservaste.</p>
+    <section class="bloque carrito-pagina" aria-label="Detalle del carrito">
+      <div id="carrito"><p>El carrito está vacío.</p></div>
+    </section>
+    <section id="formulario-checkout" class="bloque oculto" aria-labelledby="titulo-checkout">
+      <h2 id="titulo-checkout">Completar compra</h2>
+      <p>Solo el nombre es obligatorio. Los demás datos son opcionales.</p>
+      <form id="checkout-form">
+        <div class="control">
+          <label for="checkout-nombre">Nombre y apellido *</label>
+          <input type="text" id="checkout-nombre" name="nombre" placeholder="Tu nombre" required maxlength="100" autocomplete="name" />
+        </div>
+        <div class="control">
+          <label for="checkout-telefono">Teléfono (opcional)</label>
+          <input type="tel" id="checkout-telefono" name="telefono" placeholder="Tu teléfono" maxlength="20" autocomplete="tel" />
+        </div>
+        <fieldset class="grupo-opciones">
+          <legend>Forma de entrega (opcional)</legend>
+          <label><input type="radio" name="checkout-entrega" value="Lo retiro personalmente" /> Lo retiro personalmente</label>
+          <label><input type="radio" name="checkout-entrega" value="Envío a domicilio" /> Envío a domicilio</label>
+        </fieldset>
+        <fieldset class="grupo-opciones">
+          <legend>Forma de pago (opcional)</legend>
+          <label><input type="radio" name="checkout-pago" value="Efectivo" /> Efectivo</label>
+          <label><input type="radio" name="checkout-pago" value="Tarjeta" /> Tarjeta débito/crédito</label>
+          <label><input type="radio" name="checkout-pago" value="Transferencia" /> Transferencia</label>
+        </fieldset>
+        <p id="mensaje-checkout" class="mensaje" role="status" aria-live="polite"></p>
+        <div class="acciones-carrito">
+          <button class="boton" type="submit">Hacer pedido</button>
+          <button class="boton secundario" type="button" id="volver-carrito">Volver al carrito</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer><p>SportZone - Proyecto académico</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
