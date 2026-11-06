@@ -1,24 +1,37 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductoCard from '../components/ProductoCard'
-
-const productos = [
-  { id: 1, nombre: 'Pelota de fútbol', categoria: 'futbol', precio: 8900, imagen: 'pelota_futbol.jpg' },
-  { id: 2, nombre: 'Botines Nike', categoria: 'futbol', precio: 32000, imagen: 'botines.webp' },
-  { id: 3, nombre: 'Camiseta Argentina', categoria: 'futbol', precio: 12500, imagen: 'camiseta-belgrano-umbro-alternativa-2026-negro.jpg' },
-  { id: 4, nombre: 'Pala de pádel', categoria: 'padel', precio: 28000, imagen: 'paleta_padel.webp' },
-  { id: 5, nombre: 'Pelotas de pádel x3', categoria: 'padel', precio: 1800, imagen: 'pelota_tenis_padel.jpg' },
-  { id: 6, nombre: 'Pelota de básquet', categoria: 'basket', precio: 9500, imagen: 'pelota_basket.jpg' },
-  { id: 7, nombre: 'Zapatillas de básquet', categoria: 'basket', precio: 45000, imagen: 'zapatillas_basket.webp' },
-  { id: 8, nombre: 'Raqueta de tenis', categoria: 'tenis', precio: 38000, imagen: 'raqueta_tenis.webp' },
-  { id: 9, nombre: 'Pelotas de tenis x4', categoria: 'tenis', precio: 1200, imagen: 'pelota_tenis_padel.jpg' },
-  { id: 10, nombre: 'Pelota de vóley', categoria: 'voley', precio: 11000, imagen: 'pelota_voley.avif' },
-  { id: 11, nombre: 'Rodilleras', categoria: 'voley', precio: 4200, imagen: 'rodilleras.jpg' }
-]
+import { obtenerProductos } from '../api/productos'
 
 function Productos({ onAgregar }) {
+  const [productos, setProductos] = useState([])
   const [categoria, setCategoria] = useState('todos')
   const [busqueda, setBusqueda] = useState('')
+  const [cargando, setCargando] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    const controlador = new AbortController()
+
+    const cargarProductos = async () => {
+      try {
+        const datos = await obtenerProductos(controlador.signal)
+        setProductos(datos)
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          setError('No se pudieron cargar los productos.')
+        }
+      } finally {
+        if (!controlador.signal.aborted) {
+          setCargando(false)
+        }
+      }
+    }
+
+    cargarProductos()
+
+    return () => controlador.abort()
+  }, [])
 
   const productosFiltrados = productos.filter((producto) => {
     const coincideCategoria =
@@ -34,9 +47,6 @@ function Productos({ onAgregar }) {
     return coincideCategoria && coincideBusqueda
   })
 
-  const agregarProducto = (producto) => {
-  onAgregar(producto)
-}
   return (
     <section>
       <h2>Productos</h2>
@@ -72,18 +82,32 @@ function Productos({ onAgregar }) {
         </div>
       </div>
 
-      <div className="grid">
-        {productosFiltrados.map((producto) => (
-          <ProductoCard
-            key={producto.id}
-            producto={producto}
-            onAgregar={agregarProducto}
-          />
-        ))}
-      </div>
+      {cargando && (
+        <p role="status">Cargando productos...</p>
+      )}
 
-      {productosFiltrados.length === 0 && (
-        <p>No encontramos productos con esos filtros.</p>
+      {error && (
+        <p className="mensaje-error" role="alert">
+          {error}
+        </p>
+      )}
+
+      {!cargando && !error && (
+        <>
+          <div className="grid">
+            {productosFiltrados.map((producto) => (
+              <ProductoCard
+                key={producto.id}
+                producto={producto}
+                onAgregar={onAgregar}
+              />
+            ))}
+          </div>
+
+          {productosFiltrados.length === 0 && (
+            <p>No encontramos productos con esos filtros.</p>
+          )}
+        </>
       )}
     </section>
   )

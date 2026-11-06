@@ -45,7 +45,7 @@ function App() {
   const agregarProducto = (producto) => {
     setCarrito((anterior) => {
       const existe = anterior.find(
-        (item) => item.id === producto.id
+        (item) => String(item.id) === String(producto.id)
       )
 
       if (existe) {
@@ -60,23 +60,25 @@ function App() {
     })
   }
 
-  const cambiarCantidad = (id, cambio) => {
-    setCarrito((anterior) =>
-      anterior
-        .map((item) =>
-          item.id === id
-            ? { ...item, cantidad: item.cantidad + cambio }
-            : item
-        )
-        .filter((item) => item.cantidad > 0)
-    )
-  }
+  
+const cambiarCantidad = (id, cambio) => {
+  setCarrito((anterior) =>
+    anterior
+      .map((item) =>
+        String(item.id) === String(id)
+          ? { ...item, cantidad: item.cantidad + cambio }
+          : item
+      )
+      .filter((item) => item.cantidad > 0)
+  )
+}
 
-  const eliminarProducto = (id) => {
-    setCarrito((anterior) =>
-      anterior.filter((item) => item.id !== id)
-    )
-  }
+const eliminarProducto = (id) => {
+  setCarrito((anterior) =>
+    anterior.filter((item) => String(item.id) !== String(id))
+  )
+}
+
 
   const vaciarCarrito = () => {
     setCarrito([])
