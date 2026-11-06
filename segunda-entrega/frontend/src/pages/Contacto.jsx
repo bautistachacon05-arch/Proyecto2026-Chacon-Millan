@@ -1,7 +1,9 @@
 
+import Card from '@/components/Card'
+
 /**
  * Muestra la información de contacto de SportZone.
- * @returns {JSX.Element} Página de contacto.
+ * @returns {React.ReactElement} Página de contacto.
  */
 function Contacto() {
   return (
@@ -14,17 +16,13 @@ function Contacto() {
       </p>
 
       <div className="contacto">
-        <article className="caja">
-          <h3>WhatsApp</h3>
-
+        <Card titulo="WhatsApp">
           <p>+54 9 351 555 2026</p>
-        </article>
+        </Card>
 
-        <article className="caja">
-          <h3>Correo electrónico</h3>
-
+        <Card titulo="Correo electrónico">
           <p>sportzone@ejemplo.com</p>
-        </article>
+        </Card>
       </div>
 
       <p className="aviso-contacto">
