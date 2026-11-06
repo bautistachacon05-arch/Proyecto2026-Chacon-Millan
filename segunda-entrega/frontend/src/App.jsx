@@ -1,4 +1,6 @@
 
+import Info from '@/pages/Info'
+import Contacto from '@/pages/Contacto'
 import Canchas from '@/pages/Canchas'
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
@@ -51,7 +53,7 @@ function App() {
 
       if (existe) {
         return anterior.map((item) =>
-          item.id === producto.id
+          String(item.id) === String(producto.id)
             ? { ...item, cantidad: item.cantidad + 1 }
             : item
         )
@@ -122,6 +124,8 @@ const eliminarProducto = (id) => {
             }
           />
           <Route path="/canchas" element={<Canchas />} />
+          <Route path="/info" element={<Info />} />
+          <Route path="/contacto" element={<Contacto />} />
         </Route>
       </Routes>
     </BrowserRouter>

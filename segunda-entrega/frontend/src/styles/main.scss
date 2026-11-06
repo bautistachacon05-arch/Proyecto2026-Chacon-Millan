@@ -323,5 +323,83 @@ footer {
   }
 }
 
+/* Página de información */
+.pagina-info {
+  max-width: 850px;
+  margin: 0 auto;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  .info-list {
+    display: grid;
+    gap: 18px;
+    margin-top: 25px;
+  }
+
+  .caja {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 8px;
+    }
+  }
+
+  .info-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+  }
+}
+
+/* Página de contacto */
+.pagina-contacto {
+  max-width: 750px;
+  margin: 0 auto;
+
+  .contacto {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+  }
+
+  .caja {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  .aviso-contacto {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+}
+
+/* Diseño responsive */
+@media (max-width: 700px) {
+  .pagina-contacto .contacto {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
