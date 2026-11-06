@@ -315,32 +315,35 @@ npm audit
 También se deben comprobar manualmente las rutas, la navegación, los filtros, las validaciones y el funcionamiento del carrito.
 
 
+
 ### Dependencias y seguridad
 
-Se ejecutó `npm audit` para analizar las dependencias del proyecto.
+Se ejecutó `npm audit` para verificar las dependencias
+del proyecto.
 
-Resultado de la auditoría:
+Resultado final:
 
 - Vulnerabilidades críticas: 0.
 - Vulnerabilidades altas: 0.
-- Vulnerabilidades moderadas: 4.
+- Vulnerabilidades moderadas: 0.
 - Vulnerabilidades bajas: 0.
 
-Las cuatro vulnerabilidades moderadas están relacionadas con
-`minimatch` y sus dependencias indirectas utilizadas por ESLint.
+Se detectó previamente una vulnerabilidad en la
+dependencia transitiva `minimatch`, utilizada por ESLint.
 
-Aviso de seguridad:
-GHSA-g3hv-75wg-m249.
+Para resolverla se agregó un override en `package.json`
+que utiliza `minimatch` en su versión 11.0.1 o superior,
+sin modificar la versión principal de ESLint.
 
-La herramienta propone ejecutar `npm audit fix --force`,
-pero esta operación instalaría ESLint 9.39.5, lo que implica
-un cambio de versión principal potencialmente incompatible.
+Después de aplicar el cambio se verificó:
 
-Por este motivo, no se aplicó la corrección forzada sin
-comprobar previamente la compatibilidad.
+- `npm audit`: 0 vulnerabilidades.
+- `npm run lint`: sin errores.
+- `npm run build`: compilación correcta.
 
-Las vulnerabilidades pendientes requieren seguimiento y
-una actualización segura de las dependencias afectadas.
+La configuración de seguridad se encuentra registrada
+en `package.json` y `package-lock.json`.
+
 
 
 ## Control de versiones
