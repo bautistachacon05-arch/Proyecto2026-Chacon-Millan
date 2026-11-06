@@ -1,4 +1,5 @@
 
+import Canchas from '@/pages/Canchas'
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 
@@ -103,7 +104,10 @@ const eliminarProducto = (id) => {
             path="/productos"
             element={
               <Productos onAgregar={agregarProducto} />
+
+            
             }
+
           />
 
           <Route
@@ -117,6 +121,7 @@ const eliminarProducto = (id) => {
               />
             }
           />
+          <Route path="/canchas" element={<Canchas />} />
         </Route>
       </Routes>
     </BrowserRouter>
