@@ -1,23 +1,31 @@
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-function Header() {
+function Header({ cantidadCarrito }) {
   const navigate = useNavigate()
 
   return (
     <header>
       <div className="header">
-        <h1 className="logo" onClick={() => navigate('/')}>
-          SportZone
+        <h1 className="logo">
+          <button
+            type="button"
+            className="logo-boton"
+            onClick={() => navigate('/')}
+          >
+            SportZone
+          </button>
         </h1>
 
         <nav aria-label="Navegación principal">
-          <a href="/">Inicio</a>
-          <a href="/productos">Productos</a>
-          <a href="/canchas">Canchas</a>
-          <a href="/info">Info</a>
-          <a href="/contacto">Contacto</a>
-          <a href="/carrito">🛒 Carrito</a>
+          <Link to="/">Inicio</Link>
+          <Link to="/productos">Productos</Link>
+          <Link to="/canchas">Canchas</Link>
+          <Link to="/info">Info</Link>
+          <Link to="/contacto">Contacto</Link>
+          <Link to="/carrito">
+            🛒 Carrito ({cantidadCarrito})
+          </Link>
         </nav>
       </div>
     </header>

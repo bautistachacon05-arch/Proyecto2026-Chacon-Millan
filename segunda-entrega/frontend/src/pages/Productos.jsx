@@ -16,7 +16,7 @@ const productos = [
   { id: 11, nombre: 'Rodilleras', categoria: 'voley', precio: 4200, imagen: 'rodilleras.jpg' }
 ]
 
-function Productos() {
+function Productos({ onAgregar }) {
   const [categoria, setCategoria] = useState('todos')
   const [busqueda, setBusqueda] = useState('')
 
@@ -35,9 +35,8 @@ function Productos() {
   })
 
   const agregarProducto = (producto) => {
-    alert(`${producto.nombre} se conectará al carrito en el próximo paso`)
-  }
-
+  onAgregar(producto)
+}
   return (
     <section>
       <h2>Productos</h2>
